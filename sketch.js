@@ -10,6 +10,9 @@ var seed = 1;
 var snow = [];
 var flakes = 100;
 
+// variable to hold the length of tree trunk
+var treeLength = 120;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   smooth();
@@ -33,18 +36,18 @@ function draw() {
   t += 0.005;  
   randomSeed(seed);          
   // Create the tree  
-  branch(120, 0);
+  branch(treeLength, 0);
           
   // Text -- Website related  
   noStroke();  
   // Minion Yellow color for text  
   fill('#F1DB4B');  
   // Text at the starting of the trunk  
-  translate(-width/2, -height);  
+  translate(-width/2, -height+treeLength);  
   textFont("monospace");  
   textSize(40);  
   textAlign(CENTER, CENTER);  
-  text("bluerama", width/2, height);
+  text("bluerama", width/2, height-treeLength);
   
   // Snowflakes
   for (var i = 0; i < flakes; i++) {
