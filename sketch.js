@@ -61,7 +61,7 @@ function snowFlake() {
   this.x = random(width);
   this.y = random(height);
   // Velocity of the snowflake
-  this.xspeed = map(noise(yoff), 0, 1, -0.5, 0.5);
+  this.xspeed = map(noise(t), 0, 1, -0.5, 0.5);
   this.yspeed = random(1, 4);
   // Diameter of the snowflake
   this.diameter = map(this.yspeed, 1, 4, 5, 1);
