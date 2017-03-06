@@ -11,6 +11,10 @@ function setup() {
   smooth();
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 function draw() {
   // Light Steel Blue background  
   background('#A7C6DA');        
