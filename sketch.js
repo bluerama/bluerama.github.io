@@ -1,14 +1,21 @@
 /* 
-Code inspired by an example in Daniel Shiffman's "Nature of Code" book
+Code inspired by the examples shown in Daniel Shiffman's "Nature of Code"
 */
 
 // seed and perlin noise start point
 var t = 0;
 var seed = 1;
 
+// snow
+var snow = [];
+var flakes = 100;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   smooth();
+  for (var i = 0; i < flakes; i++) {
+    snow.push(new snowFlake());
+  }
 }
 
 function windowResized() {
@@ -38,6 +45,52 @@ function draw() {
   textSize(40);  
   textAlign(CENTER, CENTER);  
   text("bluerama", width/2, height);
+  
+  // Snowflakes
+  for (var i = 0; i < flakes; i++) {
+    snow[i].update();
+    snow[i].render();
+  }
+}
+
+// snowFlake class
+function snowFlake() {
+  // TODO: Use arrays for position and velocity
+  // TODO: Incorporate gravity
+  // Position of the snowflake
+  this.x = random(width);
+  this.y = random(height);
+  // Velocity of the snowflake
+  this.xspeed = map(noise(yoff), 0, 1, -0.5, 0.5);
+  this.yspeed = random(1, 4);
+  // Diameter of the snowflake
+  this.diameter = map(this.yspeed, 1, 4, 5, 1);
+  
+  this.update = function() {
+    // Add velocities to positions
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+    
+    // If flake falls below screen place it on the top of screen
+    if (this.y > height) {
+      this.y = 0;
+    }
+    
+    // Make sure that the snowflake stays within the screen
+    if (this.x > width) {
+      this.x = 0;
+    }
+    if (this.x < 0) {
+      this.x = width;
+    }
+  };
+  
+  // Draw the snowflake 
+  this.render = function() {
+    noStroke();
+    fill(255);
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  };
 }
 
 // Function to recursively draw the tree
