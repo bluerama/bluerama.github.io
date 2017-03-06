@@ -8,7 +8,7 @@ var seed = 1;
 
 // snow
 var snow = [];
-var flakes = 100;
+var flakes = 250;
 
 // variable to hold the length of tree trunk
 var treeLength = 120;
