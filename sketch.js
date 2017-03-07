@@ -25,6 +25,10 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
+function mouseScrolled(evnt) {
+  t += evnt.delta * 0.001;
+}
+
 function draw() {
   // Light Steel Blue background  
   background('#A7C6DA');        
