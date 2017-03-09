@@ -23,6 +23,9 @@ function setup() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  for (var i = 0; i < flakes; i++) {
+   snow[i].reset(); 
+  }
 }
 
 function mouseScrolled(evnt) {
@@ -97,6 +100,11 @@ function snowFlake() {
     noStroke();
     fill(255);
     ellipse(this.x, this.y, this.diameter, this.diameter);
+  };
+  
+  this.reset = function() {
+    this.x = random(width);
+    this.y = random(height);
   };
 }
 
