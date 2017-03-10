@@ -1,6 +1,8 @@
 /* 
 Code inspired by the examples shown in Daniel Shiffman's "Nature of Code"
 */
+// cavnas variable
+var canvas;
 
 // seed and perlin noise start point
 var t = 0;
@@ -14,7 +16,8 @@ var flakes = 250;
 var treeLength = 120;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent("dynamic_background");
   smooth();
   for (var i = 0; i < flakes; i++) {
     snow.push(new snowFlake());
