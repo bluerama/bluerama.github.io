@@ -11,10 +11,10 @@ var seed = 1;
 
 // snow
 var snow = [];
-var flakes = 250;
+var flakes = 500;
 
 // variable to hold the length of tree trunk
-var treeLength = 120;
+var treeLength;
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
@@ -48,6 +48,7 @@ function draw() {
   t += 0.005;
   randomSeed(seed);
   // Create the tree
+  treeLength = height/6;
   branch(treeLength, xoff);
 
   // Text -- Website related
