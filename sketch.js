@@ -7,7 +7,7 @@ var canvas;
 // seed and perlin noise start point
 var xoff = 0;
 var t = 0;
-var seed = 1;
+var seed = 100;
 
 // snow
 var snow = [];
@@ -51,12 +51,15 @@ function draw() {
   treeLength = height/6;
   branch(treeLength, xoff);
 
+
   // Text -- Website related
   //noStroke();
   // Minion Yellow color for text
   //fill('#F1DB4B');
   // Text at the starting of the trunk
   translate(-width/2, -height+treeLength);
+
+
   //textFont("monospace");
   //textSize(40);
   //textAlign(CENTER, CENTER);
@@ -121,7 +124,7 @@ function snowFlake() {
 function branch(h, xoff) {
   // thickness of branch is proportional to the position of branch on tree
   // highest branches have thinnest widths
-  var sw = map(h, 2, 120, 1, 5);
+  var sw = map(h, 2, height/6, 1, 5);
   strokeWeight(sw);
 
   // Draw the branch
