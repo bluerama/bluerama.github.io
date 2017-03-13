@@ -33,7 +33,7 @@ function windowResized() {
 }
 
 function mouseWheel(event) {
-  t += event.delta * 0.001;
+  //t += event.delta * 0.001;
   //console.log(event);
 }
 
