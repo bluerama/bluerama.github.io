@@ -40,7 +40,8 @@ function mouseWheel(event) {
 function draw() {
   // Light Steel Blue background
   //background('#A7C6DA');
-  background('#3E8896')
+  //background('#3E8896');
+  background('#68A9B5');
   stroke(255);
   // translate current location. We'll draw the tree at (center, bottom)
   translate(width/2, height);
