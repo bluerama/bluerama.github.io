@@ -9,10 +9,6 @@ var xoff = 0;
 var t = 0;
 var seed = 100;
 
-// snow
-var snow = [];
-var flakes = 500;
-
 // variable to hold the length of tree trunk
 var treeLength;
 
@@ -20,16 +16,10 @@ function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("dynamic_background");
   smooth();
-  for (var i = 0; i < flakes; i++) {
-    snow.push(new snowFlake());
-  }
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  for (var i = 0; i < flakes; i++) {
-   snow[i].reset();
-  }
 }
 
 function mouseWheel(event) {
@@ -38,11 +28,8 @@ function mouseWheel(event) {
 }
 
 function draw() {
-  // Light Steel Blue background
-  //background('#A7C6DA');
-  //background('#3E8896');
-  background('#68A9B5');
-  stroke(255);
+  background(255)
+  stroke(0);
   // translate current location. We'll draw the tree at (center, bottom)
   translate(width/2, height);
 
@@ -53,73 +40,6 @@ function draw() {
   treeLength = height/6;
   branch(treeLength, xoff);
 
-
-  // Text -- Website related
-  //noStroke();
-  // Minion Yellow color for text
-  //fill('#F1DB4B');
-  // Text at the starting of the trunk
-  translate(-width/2, -height+treeLength);
-
-
-  //textFont("monospace");
-  //textSize(40);
-  //textAlign(CENTER, CENTER);
-  //text("bluerama", width/2, height-treeLength);
-
-  // Snowflakes
-  for (var i = 0; i < flakes; i++) {
-    snow[i].update();
-    snow[i].render();
-  }
-}
-
-// snowFlake class
-function snowFlake() {
-  // TODO: Use arrays for position and velocity
-  // TODO: Incorporate gravity
-  // Position of the snowflake
-  this.x = random(width);
-  this.y = random(height);
-  // Velocity of the snowflake
-  //this.xspeed = map(noise(xoff, t), 0, 1, -3, 3);
-  //this.yspeed = random(1, 4);
-  // Diameter of the snowflake
-  //this.diameter = map(this.yspeed, 1, 4, 5, 1);
-  this.diameter = random(1, 5);
-
-  this.update = function() {
-    this.xspeed = map(noise(xoff, t), 0, 1, -3, 3);
-    this.yspeed = map(this.diameter, 1, 5, 5, 1);
-    // Add velocities to positions
-    this.x += this.xspeed;
-    this.y += this.yspeed;
-
-    // If flake falls below screen place it on the top of screen
-    if (this.y > height) {
-      this.y = 0;
-    }
-
-    // Make sure that the snowflake stays within the screen
-    if (this.x > width) {
-      this.x = 0;
-    }
-    if (this.x < 0) {
-      this.x = width;
-    }
-  };
-
-  // Draw the snowflake
-  this.render = function() {
-    noStroke();
-    fill(255);
-    ellipse(this.x, this.y, this.diameter, this.diameter);
-  };
-
-  this.reset = function() {
-    this.x = random(width);
-    this.y = random(height);
-  };
 }
 
 // Function to recursively draw the tree
@@ -147,7 +67,7 @@ function branch(h, xoff) {
     for (var i = 0; i < n; i++) {
       // The angle the child branch makes with the parent branch
       // is mapped to the noise space.
-      var theta = map(noise(xoff+i, t), 0, 1, -PI/3, PI/3);
+      var theta = map(noise(xoff+i, t), 0, 1, -PI/4, PI/4);
       if (n % 2 == 0) {
         // Make every even branch 'blow' in the opposite direction
         theta *= -1;
