@@ -37,7 +37,7 @@ function draw() {
   t += 0.005;
   randomSeed(seed);
   // Create the tree
-  treeLength = height/6;
+  treeLength = height/8;
   branch(treeLength, xoff);
 
 }
