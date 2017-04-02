@@ -1,6 +1,6 @@
-# bluerama.github.io
+# Personal Website
 
 
-Creating a personal website. A work in progress. 
+A work in progress. Using the p5 library for javascript
 
 Access at https://bluerama.github.io
