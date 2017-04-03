@@ -47,7 +47,7 @@ function draw() {
 function branch(h, xoff) {
   // thickness of branch is proportional to the position of branch on tree
   // highest branches have thinnest widths
-  var sw = map(h, 2, height/6, 1, 5);
+  var sw = map(h, 2, treeLength, 1, 5);
   strokeWeight(sw);
 
   // Draw the branch
@@ -68,7 +68,7 @@ function branch(h, xoff) {
     for (var i = 0; i < n; i++) {
       // The angle the child branch makes with the parent branch
       // is mapped to the noise space.
-      var theta = map(noise(xoff+i, t), 0, 1, -PI/4, PI/4);
+      var theta = map(noise(xoff+i, t), 0, 1, -PI/6, PI/6);
       if (n % 2 == 0) {
         // Make every even branch 'blow' in the opposite direction
         theta *= -1;
