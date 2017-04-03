@@ -23,15 +23,15 @@ function windowResized() {
 }
 
 function mouseWheel(event) {
-  //t += event.delta * 0.001;
-  //console.log(event);
+  t += event.delta * 0.001;
+  console.log(event);
 }
 
 function draw() {
   background(255)
   stroke(0);
   // translate current location. We'll draw the tree at (center, bottom)
-  translate(width/2, height);
+  translate(width/8, height);
 
   // Move in noise space
   t += 0.005;
@@ -42,6 +42,7 @@ function draw() {
 
 }
 
+// TODO: Make this a class
 // Function to recursively draw the tree
 function branch(h, xoff) {
   // thickness of branch is proportional to the position of branch on tree
@@ -82,3 +83,4 @@ function branch(h, xoff) {
     }
   }
 }
+
